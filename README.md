@@ -20,3 +20,5 @@
 # -open up the terminal
 # -type: npx jest
 #
+# Post Script Note:
+# I sent it to my projects folder github. If you see this it should have been sent again correctly. Apologies for any weirdness
