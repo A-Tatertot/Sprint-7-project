@@ -11,7 +11,7 @@
 # -GitHub
 # 
 # Techniques
-# -unsure of what that means in this circumstance but I used what references I could to the best of my ability
+# -utilizing jest and javascript to perform test tasks
 #
 # Instructions
 # -open up visual studio

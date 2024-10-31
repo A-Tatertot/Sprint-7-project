@@ -1,43 +1,42 @@
 // eslint-disable-next-line no-undef
 const config = require('../config');
 
-let actualStatusCode;
+
 // /*
 
 test('response status should be 200', async () => {
-	
+	let actualResponseCode; //Code does not work if I do not declare it earlier
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, { //works in postman
 			method: 'DELETE',
 			
 		});
-		actualStatusCode = await response.status; //need this to actually transport the hecking variable
-		//console.log(actualStatusCode); //why can I not call this
+		
+		actualResponseCode = await response.status; 
+		//console.log(actualStatusCode);
 	} catch (error) {
 		console.error(error);
 	}
-	console.log(actualStatusCode);
-	expect(actualStatusCode).toBe(200);
+	
+	expect(actualResponseCode).toBe(200);
 	
 });
 
 
-test('deleting the order with ID 7 and verifying its deletion', async () => {
+test('response should verify id 7 deletion', async () => {
+	let actualResponseCode;
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/orders/7`, {
+		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, {
 			method: 'DELETE',
 		});
-		actualResponseCode = await response.json();// the fact that this does not translate lower as easily infuriates me
-		console.log(actualResponseCode);//hope you can chuckle at these comments
-		expect(actualResponseCode).toEqual({ok: true});
+		actualResponseCode= await response.json();
+		
 	} 
 	catch (error) {
 		console.error(error);
 	}
-	
-	//console.log(actualStatusCode('code'));
-	//expect(actualStatusCode).toBeUndefined();//equals null
-	
+	//console.log(actualResponseCode);
+	expect(actualResponseCode["ok"]).toBe(true);
 	
 });
 

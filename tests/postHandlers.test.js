@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-undef
 const config = require('../config');
 
-let actualResponseBody;
 ///*
 const requestBody = {
 	"products": [
@@ -16,7 +15,7 @@ const requestBody = {
 	]
 }
 
-const expectedOutput = { //OK. SO. THIS WORKS, BUT IT'S NOT THE SAME IN THE API DOCS STUFF. GLITCH? ASK
+const expectedOutput = { 
 
 	"Everything You Need": {
 		"Sprite Soft Drink": true,
@@ -40,8 +39,7 @@ const expectedOutput = { //OK. SO. THIS WORKS, BUT IT'S NOT THE SAME IN THE API 
 	}
 }
 /*
-const actualOutput = { //OK. SO. THIS WORKS, BUT IT'S NOT THE SAME IN THE API DOCS STUFF. GLITCH? ASK
-
+const actualOutput = { 
 	'Everything You Need': { 'Sprite Soft Drink': true, 'Fruit Power Juice - Litchi': false },
 	'Food City': { 'Sprite Soft Drink': true, 'Fruit Power Juice - Litchi': true },
 	'Big World': { 'Fruit Power Juice - Litchi': false, 'Sprite Soft Drink': false },
@@ -50,6 +48,9 @@ const actualOutput = { //OK. SO. THIS WORKS, BUT IT'S NOT THE SAME IN THE API DO
 */
 //this checks 200
 test('response status should be 200', async () => {
+
+	let actualResponseBody;
+
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/warehouses/check`, {
 			method: 'POST',
@@ -58,7 +59,7 @@ test('response status should be 200', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
-		actualResponseBody = response.status;
+		actualResponseBody = response.status; //does not let me put let in front
 	} catch (error) {
 		console.error(error);
 	}
@@ -67,20 +68,19 @@ test('response status should be 200', async () => {
 });
 
 //this posts
-test('Whether the post will return the documented expected outcome', async () => {
+test('check if the response post will return the expected outcome in documentation', async () => {
+	let responseBody; 
     try {
-		let responseBody; //need this else code doesnt work proper
+		
 		const response = await fetch(`${config.API_URL}/api/v1/warehouses/check`, {
 			method: 'POST',
 			headers: {
 			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
-		});//but it's not actually checking the response?
+		});
 		responseBody = await response.json();
-		console.log(ResponseBody);
-		console.log(expectedOutput);
-
+		
 	} 
 	catch (error) {
 		console.error(error);
