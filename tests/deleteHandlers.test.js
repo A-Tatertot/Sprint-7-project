@@ -5,9 +5,9 @@ const config = require('../config');
 // /*
 
 test('response status should be 200', async () => {
-	let actualResponseCode; //Code does not work if I do not declare it earlier
+	let actualResponseCode; 
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, { //works in postman
+		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, { 
 			method: 'DELETE',
 			
 		});
